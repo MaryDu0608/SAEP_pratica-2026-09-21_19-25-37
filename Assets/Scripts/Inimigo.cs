@@ -4,13 +4,14 @@ public class Inimigo : MonoBehaviour
 {
     public float velocidade = 3f;
     public float distanciaParar = 10f;
+    public int VidaInimigo = 3;
 
     public GameObject prefabTiroInimigo;
     public Transform pontoTiroInimigo;
-    public float tempoEntreTiros = 2f;
+    public float intervaloTiro = 2f;
 
     private Transform jogador;
-    ptiva
+    private float cronometro;
     void Start()
     {
         GameObject jogadorObj = GameObject.FindGameObjectWithTag("Player");
@@ -24,6 +25,24 @@ public class Inimigo : MonoBehaviour
     void Update()
     {
         MoveInimigo();
+        cronometro += Time.deltaTime;
+
+        if (cronometro >= intervaloTiro)
+        {
+            Atirar();
+            cronometro = 0f;
+        }
+
+        
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (CompareTag("Bala"))
+        {
+            ReceberDano();
+
+        }
     }
 
     public void MoveInimigo ()
@@ -36,6 +55,27 @@ public class Inimigo : MonoBehaviour
         {
 
             transform.Translate(Vector3.left * velocidade * Time.deltaTime, Space.World);
+
+        }
+    }
+
+    void Atirar()
+    {
+        if (prefabTiroInimigo != null && pontoTiroInimigo != null)
+        {
+            Instantiate(prefabTiroInimigo, pontoTiroInimigo.position, Quaternion.identity);
+
+
+        }
+    }
+
+    void ReceberDano()
+    {
+        VidaInimigo--;
+
+        if (VidaInimigo <= 0)
+        {
+            Destroy(gameObject);
 
         }
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AtaqueGuiado : MonoBehaviour
 {
-    public float velocidade = 5f;
+    public float velocidade = 3f;
     private Transform jogador;
     void Start()
     {

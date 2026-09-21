@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1940089364089772222}
   m_Layer: 0
   m_Name: enemy_03_0
-  m_TagString: Untagged
+  m_TagString: inimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inimigo
   velocidade: 3
   distanciaParar: 10
+  VidaInimigo: 3
   prefabTiroInimigo: {fileID: 2187233128613394894, guid: 9ddcda4e05724df468bae3982387bd43, type: 3}
   pontoTiroInimigo: {fileID: 978019918813937984}
-  tempoEntreTiros: 2
+  intervaloTiro: 3
