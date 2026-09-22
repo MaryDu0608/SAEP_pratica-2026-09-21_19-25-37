@@ -8,7 +8,7 @@ public class SpawnarInimigos : MonoBehaviour
     void Start()
     {
        
-        InvokeRepeating("Spawner", 1f, 3f);
+        InvokeRepeating("Spawner", 1f, 5f);
 
     }
 

@@ -4,7 +4,8 @@ public class Inimigo : MonoBehaviour
 {
     public float velocidade = 3f;
     public float distanciaParar = 10f;
-    public int VidaInimigo = 3;
+    public int vidaMaximalInimigo = 3;
+    public int vidaAtualInimigo;
 
     public GameObject prefabTiroInimigo;
     public Transform pontoTiroInimigo;
@@ -33,12 +34,13 @@ public class Inimigo : MonoBehaviour
             cronometro = 0f;
         }
 
+        vidaAtualInimigo = vidaMaximalInimigo;
         
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CompareTag("Bala"))
+        if (collision.CompareTag("Bala"))
         {
             ReceberDano();
 
@@ -71,9 +73,10 @@ public class Inimigo : MonoBehaviour
 
     void ReceberDano()
     {
-        VidaInimigo--;
+        vidaAtualInimigo--;
+        Debug.Log("Recebeu dano, vida atual " +  vidaAtualInimigo);
 
-        if (VidaInimigo <= 0)
+        if (vidaAtualInimigo <= 0)
         {
             Destroy(gameObject);
 
