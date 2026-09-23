@@ -6,6 +6,7 @@ public class Inimigo : MonoBehaviour
     public float distanciaParar = 10f;
     public int vidaMaximalInimigo = 3;
     public int vidaAtualInimigo;
+    private ContadorVitoria contadorVitoria;
 
     public GameObject prefabTiroInimigo;
     public Transform pontoTiroInimigo;
@@ -20,6 +21,7 @@ public class Inimigo : MonoBehaviour
         {
             jogador = jogadorObj.transform;
         }
+        vidaAtualInimigo = vidaMaximalInimigo;
     }
 
     
@@ -34,7 +36,7 @@ public class Inimigo : MonoBehaviour
             cronometro = 0f;
         }
 
-        vidaAtualInimigo = vidaMaximalInimigo;
+        
         
     }
 
@@ -78,8 +80,21 @@ public class Inimigo : MonoBehaviour
 
         if (vidaAtualInimigo <= 0)
         {
+            PontosMorte();
             Destroy(gameObject);
 
+           
         }
+    }
+
+    void PontosMorte()
+    {
+        if (ContadorVitoria.Instance != null) 
+        { 
+           ContadorVitoria.Instance.AdicionarPontos();
+        
+        }
+
+
     }
 }

@@ -4,16 +4,19 @@ public class AtaqueGuiado : MonoBehaviour
 {
     public float velocidade = 3f;
     private Transform jogador;
+    public float tempoVida = 2f;
     void Start()
     {
         GameObject jogadorObj = GameObject.FindGameObjectWithTag("Player");
+        Destroy(gameObject, tempoVida);
 
         if (jogadorObj != null)
         {
            jogador = jogadorObj.transform;
+            
         }
 
-        Destroy(gameObject, 5f); // Destroi o projétil após 5 segundos
+        
     }
 
     

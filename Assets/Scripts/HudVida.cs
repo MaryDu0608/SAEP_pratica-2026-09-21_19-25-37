@@ -26,16 +26,16 @@ public class HudVida : MonoBehaviour
         {
 
             coracoes[i].enabled = true;
-            if(i == vidaAtual)
+            if(i < vidaAtual)
             {
 
                 Debug.Log("vida1");
-                coracoes[i].enabled = coracaoCheio;
+                coracoes[i].sprite = coracaoCheio;
             }
             else
             {
                 Debug.Log("vida2");
-                coracoes[i].enabled = coracaoVazio;
+                coracoes[i].sprite = coracaoVazio;
             }
 
 

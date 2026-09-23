@@ -203,7 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Inimigo
   velocidade: 3
   distanciaParar: 10
-  VidaInimigo: 3
+  vidaMaximalInimigo: 3
+  vidaAtualInimigo: 3
   prefabTiroInimigo: {fileID: 2187233128613394894, guid: 9ddcda4e05724df468bae3982387bd43, type: 3}
   pontoTiroInimigo: {fileID: 978019918813937984}
-  intervaloTiro: 3
+  intervaloTiro: 2

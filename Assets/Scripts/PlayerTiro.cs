@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerTiro : MonoBehaviour
 {
@@ -8,6 +9,14 @@ public class PlayerTiro : MonoBehaviour
     public float tempoDeVidaTiro = 2f;
     public GameObject tiroPrefab;
     public Transform pontoDeDisparo;
+    private AudioSource audioSource;
+    [SerializeField] public AudioClip somTiro;
+
+     void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+
+    }
 
     void Update()
     {
@@ -29,11 +38,19 @@ public class PlayerTiro : MonoBehaviour
 
         if (rb != null)
         {
-           
+            TocarSomTiro();
             rb.linearVelocity = pontoDeDisparo.right * velocidadeTiro;
             Destroy(bala, tempoDeVidaTiro);
         }
 
         
+    }
+
+    private void TocarSomTiro()
+    {
+        if (somTiro != null && audioSource != null)
+        {
+            audioSource.PlayOneShot(somTiro);
+        }
     }
 }
